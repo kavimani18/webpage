@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArconCivil - Building a Better Future</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .get-in-touch {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .get-in-touch:hover {
+            background-color: #45a049;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+
+        .hero-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text-group {
+            position: relative;
+            font-size: 2em;
+            color: white;
+        }
+
+        .text-group .set {
+            opacity: 1;
+            animation: fadeLoop 8s infinite;
+        }
+
+        .text-group .set:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .text-group .set:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        @keyframes fadeLoop {
+            0%, 50%, 100% { opacity: 0; }
+            5%, 45% { opacity: 1; }
+        }
+
+        .set h1 {
+            margin: 5px 0;
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+
+        #new {
+            color: #007bff;
+        }
+
+        #bbf {
+            color: #45a049;
+        }
+
+        /* Client Slider */
+        .slider-container {
+            padding: 40px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .slider-container h4 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #000000, #47BE9A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slider {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 20px 0;
+        }
+
+        .slide {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .slide img {
+            height: 40px;
+            margin: 0 25px;
+            vertical-align: middle;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #0f1b2b;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .about-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .about-content h1 {
+            font-size: 3em;
+            color: #2ec4b6;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .about-video {
+            flex: 1;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .about-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Cards Section */
+        .cards-section {
+            background-color: #0f1b2b;
+            padding: 40px 20px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-placeholder {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-placeholder img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .card h2 {
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4EF1AE;
+        }
+
+        .card p {
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .services-header {
+            font-size: 35px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+            background: linear-gradient(to right, #40c4a0, #2d8b8b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-box {
+            flex: 1;
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .service-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .service-box:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-overlay h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4EF1AE;
+        }
+
+        .service-overlay p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-overlay ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-overlay li {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-overlay li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4EF1AE;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+      .project-container {
+            width: 100%;
+              font-family: 'Montserrat', sans-serif;
+            background-color: #1a2a40;
+        }
+
+        .o-container {
+            width: 100%;
+        }
+
+        .our-header {
+            width: 100%;
+            font-size: 30px;
+            text-align: center;
+            padding: 40px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to right, #40c4a0, #2d8b8b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1500px;
+            padding: 50px 200px;
+            margin: 30px;
+            background-color: #1a2a40;
+        }
+
+        .project-card {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: white;
+            padding: 5px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .project-card:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .overlay h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .overlay p {
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 50px 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 50px 50px;
+                gap: 30px;
+            }
+            
+            .project-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                gap: 20px;
+            }
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        /* News Section Header with Logo */
+        .news-header .ku-text {
+            font-size: 35px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            background: linear-gradient(to right, #40c4a0, #2d8b8b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-card-content {
+            padding: 20px;
+        }
+
+        .news-card h3 {
+            margin-bottom: 15px;
+            color: #001d3d;
+            font-size: 1.2em;
+        }
+
+        .news-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        
+         /* regsister*/
+
+.contact-section {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0.4)),
+        url('https://arconcivil.com.au/wp-content/uploads/2021/06/form-img-bg.webp') no-repeat center center/cover;
+    color: #fff;
+    padding: 70px 20px;
+    margin: 50px;
+    border-radius: 30px;
+
+}
+
+.form-container {
+    max-width: 600px;
+    margin-left: 30px;
+    color: #ccc;
+}
+
+.form-container h2 {
+    font-size: 32px;
+    font-weight: bold;
+    position: relative;
+    margin-top: 10px;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(90deg, #48C79D, #3E7A7F);
+    -webkit-background-clip: text;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.row input,
+.row select {
+    flex: 1;
+
+}
+
+
+input,
+select,
+textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #777;
+    color: #ccc;
+    font-size: 1rem;
+    padding: 10px 5px;
+    outline: none;
+
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23ccc' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+}
+
+textarea {
+    border: none;
+    resize: vertical;
+    border-bottom: 1px solid #555;
+    border-radius: 5px;
+}
+
+.file-upload {
+    display: inline-block;
+    background: #ccc;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.file-upload label {
+    cursor: pointer;
+}
+
+button {
+    background: #44d4aa;
+    border: none;
+    color: #000;
+    padding: 15px 40px;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 1rem;
+    width: fit-content;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+         /* Footer */
+        .footer {
+            background-color: #0f2233;
+            color: #ccc;
+            padding: 60px 40px 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        .footer-logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .project-btn {
+            background-color: #63f7c6;
+            color: #003c33;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .acknowledgement-section {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+        }
+
+        .footer-end {
+            background-color: #3BB288;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .end {
+
+    background-color: #3BB288;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.end p {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+
+       
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 5%;
+                position: relative;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 20px;
+                text-align: left;
+                transition: background-color 0.3s ease;
+                position: relative;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .nav-links a::before {
+                content: "• ";
+                color: #4CAF50;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+
+            .nav-links a:hover {
+                background-color: #f8f9fa;
+                color: #007bff;
+                padding-left: 30px;
+            }
+
+            .get-in-touch {
+                margin: 15px 20px;
+                text-align: center;
+                display: block;
+            }
+
+            .text-group {
+                font-size: 1.2em;
+                padding: 0 20px;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .services-container {
+                flex-direction: column;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .footer-end {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+      
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="https://arconcivil.com.au/wp-content/uploads/2021/05/ACLogo-1-1.png" alt="ArconCivil Logo">
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMobileMenu()">HOME</a></li>
+                <li><a href="#about" onclick="closeMobileMenu()">ABOUT US</a></li>
+                <li><a href="#services" onclick="closeMobileMenu()">SERVICES</a></li>
+                <li><a href="#projects" onclick="closeMobileMenu()">PROJECTS</a></li>
+                <li><a href="#news" onclick="closeMobileMenu()">NEWS</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="get-in-touch" onclick="closeMobileMenu()">GET IN TOUCH</a>
+    </header>
+
+     <section id="home" class="hero-section">
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline>
+            <source src="video.mp4" type="video/mp4">
+            
+            
+        </video>
+        
+        <!-- Overlay for text readability -->
+        <div class="overlay">
+            <div class="text-group">
+                <div class="set">
+                    <h1>WELCOME TO</h1>
+                    <h1 id="new">A NEW ERA</h1>
+                    <h1>IN CONSTRUCTION</h1>
+                </div>
+                <div class="set">
+                    <h1>BUILDING A</h1>
+                    <h1 id="bbf">BETTER & BRIGHTER FUTURE</h1>
+                    <h1>FOR GENERATION TO COME</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="slider-container">
+        <h4>CLIENTS</h4>
+        <div class="slider">
+            <div class="slide">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/negri-qqzftad95toit8pugn2alj8mrlneta2lmyk8k0gf0g.png" alt="Negri">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/ugl-qqzftitsvc03pqdk38pxpz3s42hpqk06o4flvi3vgg.png" alt="UGL">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/bmd-qqzfsy5coz7smb7lfzs574bn1lbn17q39a2xbeyj9c.png" alt="BMD">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/799px-John_Holland_Logo-qqzfo80kbyqw8w2q1g8o5t97ium7bzyo9w01gbysjk.png" alt="John Holland">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/download-3-qqzfo8yeiss6ki1cvynaqb0o48hkjp2em0nixlxedc.png" alt="Client">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/Acciona_logo.svg-qqzfoau2wgur7pymkzgjvajlb08az39va9yhw5um0w.png" alt="Acciona">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/Picture-1-qqzfseeqpggrui09n98z8rayki0xjkjq6kdq8lrsw0.png" alt="Client">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/lorourke-qqzfsh899ykmtbw66sguy8lccnn16nux6yc6ofnmdc.png" alt="Laing O'Rourke">
+                <!-- Duplicate set for seamless loop -->
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/negri-qqzftad95toit8pugn2alj8mrlneta2lmyk8k0gf0g.png" alt="Negri">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/ugl-qqzftitsvc03pqdk38pxpz3s42hpqk06o4flvi3vgg.png" alt="UGL">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/bmd-qqzfsy5coz7smb7lfzs574bn1lbn17q39a2xbeyj9c.png" alt="BMD">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/799px-John_Holland_Logo-qqzfo80kbyqw8w2q1g8o5t97ium7bzyo9w01gbysjk.png" alt="John Holland">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/download-3-qqzfo8yeiss6ki1cvynaqb0o48hkjp2em0nixlxedc.png" alt="Client">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/Acciona_logo.svg-qqzfoau2wgur7pymkzgjvajlb08az39va9yhw5um0w.png" alt="Acciona">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/Picture-1-qqzfseeqpggrui09n98z8rayki0xjkjq6kdq8lrsw0.png" alt="Client">
+                <img src="https://arconcivil.com.au/wp-content/uploads/elementor/thumbs/lorourke-qqzfsh899ykmtbw66sguy8lccnn16nux6yc6ofnmdc.png" alt="Laing O'Rourke">
+            </div>
+        </div>
+    </div>
+
+
+    <!--ABOUT-->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-content">
+                <h1>ABOUT US</h1>
+                <p>Welcome to Arcon Civil, where expertise and innovation blend seamlessly to achieve excellence across both project consulting and delivery.</p>
+                <p>Collaborating closely with our clients, we offer tailored solutions that optimise project feasibility, planning and execution strategies. Our ability to effectively manage risk, whilst minimising project delays and cost overruns is attributed to our team of highly skilled professionals dedicated to upholding the highest standards of quality, safety and sustainability.</p>
+                <p>Arcon Civil – Building a better and brighter future for generations to come.</p>
+            </div>
+            <div class="about-video">
+                <video autoplay muted loop playsinline>
+                    <source src="https://vishnukr2201.github.io/30-05-2025/jcb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="cards-container">
+            <div class="card">
+                <div class="icon-placeholder">
+                    <img src="https://arconcivil.com.au/wp-content/uploads/2021/05/arcon-icon-11.svg" alt="Culturally Driven Icon">
+                </div>
+                <h2>CULTURALLY DRIVEN</h2>
+                <p>Incumbent within our ideology are three cornerstone principles - Passion, Transparency and Togetherness - each of which solidify our unwavering perseverance to develop and maintain long-term, purposeful relationships.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-placeholder">
+                    <img src="https://arconcivil.com.au/wp-content/uploads/2021/06/arcon-icon-2200.svg" alt="End-to-End Delivery Icon">
+                </div>
+                <h2>END-TO-END DELIVERY</h2>
+                <p>With an ability to provide end-to-end project delivery, Arcon Civil can successfully perform a range of project requirements – From initial Feasibility Analyses to Design and Construct projects, and everything in between.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-placeholder">
+                    <img src="https://arconcivil.com.au/wp-content/uploads/2021/06/safety.svg" alt="HSEQ Management Icon">
+                </div>
+                <h2>HSEQ MANAGEMENT</h2>
+                <p>Our Integrated Management System protects the Health and Safety of our Employees, whilst ensuring Environmental and Quality aspects of all projects are achieved and upheld beyond reproach.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-placeholder">
+                    <img src="https://arconcivil.com.au/wp-content/uploads/2021/05/arcon-icon-33.svg" alt="Our Commitment Icon">
+                </div>
+                <h2>OUR COMMITMENT</h2>
+                <p>Comprising of a select team of highly skilled professionals equipped with invaluable industry experience, Arcon Civil are committed to delivering quality projects on time and within budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--SERVICE-->
+    <section id="services" class="services-section">
+        <div class="services-header">OUR SERVICES</div>
+        <div class="services-container">
+            <div class="service-box">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2021/06/project-m.webp" alt="Project Management">
+                <div class="service-overlay">
+                    <h3>PROJECT MANAGEMENT</h3>
+                    <p>Utilising our wealth of knowledge and experience to streamline operations, we strive to ensure projects are executed safely and efficiently. Requiring project management resources to aid your current project deliverables? We provide the following consultancy services:</p>
+                    <ul>
+                        <li>Project Feasibilities and Tendering Services</li>
+                        <li>Contract Management and Review</li>
+                        <li>Procurement, Program & Resource Management</li>
+                        <li>On-Site Delivery Assistance</li>
+                        <li>Engineering Management</li>
+                        <li>Quality Assurance and Management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-box">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/Layer-0.png" alt="Construction Projects">
+                <div class="service-overlay">
+                    <h3>CONSTRUCTION PROJECTS</h3>
+                    <p>Leveraging our extensive project management and consulting experience on a diverse range of infrastructure projects, Arcon Civil provide end-to-end oversight and accountability through our ability to deliver projects. Combining expert advisory with hands-on execution, our range of works include but are not limited to:</p>
+                    <ul>
+                        <li>Bulk Earthworks</li>
+                        <li>Subgrade Remediation</li>
+                        <li>Stormwater Drainage</li>
+                        <li>Services Reticulation</li>
+                        <li>Concrete Pavements - Trafficable and Non-Trafficable</li>
+                        <li>Road Formation and Sealing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--PROJECT SECTION-->
+
+     <div class="project-container">
+        <div class="o-container">
+            <div class="our-header">OUR PROJECTS</div>
+        </div>
+        <div class="container">
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/b1.png" alt="Burwood Highway and McMahons Road Upgrade">
+                <div class="overlay">
+                    <h3>Burwood Highway and McMahons Road Upgrade</h3>
+                    <p>~ $30 M</p>
+                    <p>Negri Contractors & Major Road Projects Victoria</p>
+                    <p>Roads</p>
+                    <p>Ferntree Gully, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/g1.png" alt="Gippsland Line Upgrade">
+                <div class="overlay">
+                    <h3>Gippsland Line Upgrade</h3>
+                    <p>~ $650 M</p>
+                    <p>vicConnect Alliance & Regional Projects Victoria</p>
+                    <p>Roads & Rail</p>
+                    <p>Gippsland, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/h2.png" alt="Hall Road Upgrade">
+                <div class="overlay">
+                    <h3>Hall Road Upgrade</h3>
+                    <p>~ $280 M</p>
+                    <p>BMD Group & Major Road Projects Victoria</p>
+                    <p>Roads</p>
+                    <p>Cranbourne, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/h1.png" alt="Healesville Koo Wee Rup Road (Northern Package)">
+                <div class="overlay">
+                    <h3>Healesville Koo Wee Rup Road (Northern Package)</h3>
+                    <p>~ $200 M</p>
+                    <p>McConnell Dowell & Major Road Projects Victoria</p>
+                    <p>Roads</p>
+                    <p>Pakenham South, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/gh2.png" alt="Healesville Koo Wee Rup Road (Southern Package)">
+                <div class="overlay">
+                    <h3>Healesville Koo Wee Rup Road (Southern Package)</h3>
+                    <p>~ $170 M</p>
+                    <p>Seymour Whyte & Major Road Projects Victoria</p>
+                    <p>Roads</p>
+                    <p>Pakenham South, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/unnamed.png" alt="Inland Rail Victoria">
+                <div class="overlay">
+                    <h3>Inland Rail Victoria</h3>
+                    <p>~ $670 M</p>
+                    <p>McConnell Dowell & Australian Rail Track Corporation</p>
+                    <p>Rail</p>
+                    <p>Glenrowan, Seymour & Wangaratta, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/n1.png" alt="North-Western Program Alliance">
+                <div class="overlay">
+                    <h3>North-Western Program Alliance</h3>
+                    <p>~ $3.1 B</p>
+                    <p>North-West Program Alliance</p>
+                    <p>Rail</p>
+                    <p>Preston, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/p1.png" alt="Port Rail Transformation Project">
+                <div class="overlay">
+                    <h3>Port Rail Transformation Project</h3>
+                    <p>~ $150 M</p>
+                    <p>Seymour Whyte & Port of Melbourne</p>
+                    <p>Roads & Rail</p>
+                    <p>West Melbourne, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/c1.png" alt="South-Eastern Program Alliance – Croydon LXRP">
+                <div class="overlay">
+                    <h3>South-Eastern Program Alliance – Croydon LXRP</h3>
+                    <p>~ $175 M</p>
+                    <p>South-Eastern Program Alliance</p>
+                    <p>Rail</p>
+                    <p>Croydon, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/s1.png" alt="South-Eastern Program Alliance – Mont Albert LXRP">
+                <div class="overlay">
+                    <h3>South-Eastern Program Alliance – Mont Albert LXRP</h3>
+                    <p>~ $700 M</p>
+                    <p>South-Eastern Program Alliance</p>
+                    <p>Rail</p>
+                    <p>Surrey Hills, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/s2.png" alt="Southern Program Alliance – Glen Huntly LXRP">
+                <div class="overlay">
+                    <h3>Southern Program Alliance – Glen Huntly LXRP</h3>
+                    <p>~ $2.9 B</p>
+                    <p>Southern Program Alliance</p>
+                    <p>Rail</p>
+                    <p>Glen Huntly, VIC</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2024/07/w1.png" alt="Western Roads Upgrade">
+                <div class="overlay">
+                    <h3>Western Roads Upgrade</h3>
+                    <p>~ $1.8 B</p>
+                    <p>WBHO Infrastructure</p>
+                    <p>Roads</p>
+                    <p>Truganina, VIC</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--keep up section-->
+
+    <section id="news" class="news-section">
+        <div class="news-header">
+            <div class="ku-text">KEEP UP TO DATE WITH</div>
+            <img src="https://arconcivil.com.au/wp-content/uploads/2021/05/ACLogo-1-1.png" alt="ArconCivil Logo" style="height: 60px; margin: 10px auto; display: block;">
+        </div>
+        <div class="news-container">
+            <article class="news-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2022/02/Blog-6-768x512.jpg" alt="Construction Materials">
+                <div class="news-card-content">
+                    <h3>Construction Material Prices<br>Reach New Heights</h3>
+                    <p>The ever-persistent rise in construction material prices stem from a combination of global supply chain disruptions, increased demand, and inflationary pressures. Post-pandemic recovery efforts have...</p>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2021/10/Consultancy-2048x1367.jpg" alt="Civil Consultancy">
+                <div class="news-card-content">
+                    <h3>An Insight Into Civil Consultancy</h3>
+                    <p>Civil consultants play a pivotal role in ensuring the successful delivery of infrastructure projects across Victoria. This sector comprises a network of select engineers offering...</p>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2023/03/A1.jpg" alt="Innovation in Construction">
+                <div class="news-card-content">
+                    <h3>Innovation in Construction</h3>
+                    <p>Technological advancements in construction continue to shine through in this modern era. With an ability to utilize advanced technological systems and computer software programs to...</p>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2021/06/Safety-2-e1623815083618-768x705.jpg" alt="Our Pledge on Safety">
+                <div class="news-card-content">
+                    <h3>Our Pledge on Safety</h3>
+                    <p>Within the construction industry, innovation continues to take enormous developmental strides. From inception to design, this constant improvement in safety protects all those exposed to...</p>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2022/06/Blog-7-768x732.jpg" alt="Wyndham City Council">
+                <div class="news-card-content">
+                    <h3>Arcon Civil partners with<br>Wyndham City Council</h3>
+                    <p>Labelled as one of the fastest growing municipalities in Victoria – with its population soaring by almost 4.6% year-on-year - alone it comes as no...</p>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2021/11/A.jpg" alt="Stage is Set for 2022">
+                <div class="news-card-content">
+                    <h3>The Stage is Set for 2022</h3>
+                    <p>As we approach the end of 2021 – a year where project timelines were severely hindered by a persistent COVID-19 forcing Victoria into an unparalleled...</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+      <!--Register-->
+    <div class="Register-container">
+        <section class="contact-section">
+            <div class="form-container">
+                <h2>GET IN TOUCH</h2>
+                <form>
+                    <div class="row">
+                        <input type="text" placeholder="Name" required />
+                        <input type="text" placeholder="Mobile" required />
+                    </div>
+
+                    <div class="row">
+                        <input type="email" placeholder="Email" required />
+                        <select required>
+                            <option value="">Consulting</option>
+                            <option value="general">General</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+
+                    <input type="text" placeholder="Subject" required />
+                    <textarea placeholder="Message" rows="4" required></textarea>
+
+                    <div class="file-upload">
+                        <label for="attachment">
+                            📤 Attachments
+                        </label>
+                        <input type="file" id="attachment" hidden />
+                    </div>
+
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+     <!--footer-->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo & Intro -->
+            <div class="footer-column">
+                <img src="https://arconcivil.com.au/wp-content/uploads/2021/05/header-logo.webp" alt="Arconcivil Logo"
+                    class="logo" />
+                <p>
+                    Building a better and brighter future for generations to come. <br />
+                    Welcome to a new era in construction.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h3>Quick links</h3>
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Services</li>
+                    <li>Projects</li>
+                    <li>News</li>
+                    <li>Get In Touch</li>
+                </ul>
+            </div>
+
+            <!-- Projects -->
+            <div class="footer-column">
+                <h3>Projects</h3>
+                <ul>
+                    <li>Burwood Highway and McMahons Road Upgrade</li>
+                    <li>Gippsland Line Upgrade</li>
+                    <li>Hall Road Upgrade</li>
+                    <li>Healesville Koo Wee Rup Road<br />(Northern Package)</li>
+                </ul>
+                <button class="project-btn">View all projects</button>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-column">
+                <h3>Get in touch</h3>
+                <ul class="contact-info">
+                    <li><span>📍</span> PO Box 137, 109 Puckle St,<br />Moonee Ponds VIC 3039</li>
+                    <li><span>✉️</span> accounts@arconcivil.com.au</li>
+                    <li><span>📞</span> +61 401 531 088</li>
+                </ul>
+            </div>
+        </div>
+        <div class="acknowledgement-section">
+            <div class="flags">
+                <img src="flag2.png" alt="Flag2" />
+                <span>x3</span>
+                <img src="flag1.png" alt="Flag1" />
+                <span>x3</span>
+            </div>
+            <p class="ack-line-1">
+                <strong>Arcon Civil acknowledges the Traditional Owners</strong> of the lands on which our services are
+                located.
+            </p>
+            <p class="ack-line-2">
+                <strong>We honour the strength and resilience of Aboriginal and Torres Strait Islander peoples</strong>
+                and pay our
+                respects to all Elders, past and present.
+            </p>
+        </div>
+    </footer>
+    <div class="end">
+        <p>Copyright © 2025 Arcon Civil Pty Ltd. All rights reserved.</p>
+        <p>Made by Web Divine</p>
+    </div>
+</body>
